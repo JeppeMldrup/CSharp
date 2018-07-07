@@ -7,21 +7,21 @@ using System.Text;
 namespace Server{
   public class Client{
 
-    public string IP;
-    public int Index;
-    public TcpClient Socket;
+    public string ip;
+    public int index;
+    public TcpClient socket;
     public NetworkStream stream;
 
     private byte[] data = new byte[Globals.bufferSize];
 
     public Client(string _ip, int _index, TcpClient _Socket){
-      IP = _ip;
-      Index = _index;
-      Socket = _Socket;
+      ip = _ip;
+      index = _index;
+      socket = _Socket;
 
-      Socket.SendBufferSize = Globals.bufferSize;
-      Socket.ReceiveBufferSize = Globals.bufferSize;
-      stream = Socket.GetStream();
+      socket.SendBufferSize = Globals.bufferSize;
+      socket.ReceiveBufferSize = Globals.bufferSize;
+      stream = socket.GetStream();
       stream.BeginRead(data, 0, Globals.bufferSize, OnRecieveData, stream);
     }
 

@@ -30,7 +30,7 @@ namespace Server{
       {
         if (Globals.clients[i] == null){
           Globals.clients[i] = new Client(client.Client.RemoteEndPoint.ToString(), i, client);
-          Console.WriteLine("Incoming Connection from " + Globals.clients[i].IP + "|| Index: " + i);
+          Console.WriteLine("Incoming Connection from " + Globals.clients[i].ip + "|| Index: " + i);
           return;
         }
       }
