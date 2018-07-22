@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     int sockfd;
     struct sockaddr_in sock_addr;
     socklen_t sock_len;
-    char *buffer = "Hello!";
+    char buffer[10] = "Hello!";
 
     sock_len = sizeof(sock_addr);
 

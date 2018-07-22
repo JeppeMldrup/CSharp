@@ -69,19 +69,29 @@ int server_accept(server_t* server)
     }
 
     printf("Client connected\n");
-
-    err = recv(
-            conn_fd,
-            &buffer,
-            10,
-            0);
+    
+    while(1)
+    {
+        if((err = recv(conn_fd, &buffer, 10, 0) == 0))
+        {
+            break;
+        }
+    }
     if(err == -1)
     {
         printf("Failed to read message\n");
         return err;
     }
-
-    printf("Recieved: %s\n", buffer);
+    
+    if(buffer[0] != '\0')
+    {
+        printf("Recieved: %s", buffer);
+        printf("\n");
+    }
+    else
+    {
+        printf("Failed to recieve message");
+    }
 
     err = close(conn_fd);
     if(err == -1)
